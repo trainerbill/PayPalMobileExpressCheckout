@@ -33,7 +33,9 @@ application.factory('PayPalResource', function ($resource) {
                 L_PAYMENTREQUEST_0_NAME0: "Camera",
                 L_PAYMENTREQUEST_0_DESC0: "Pretty Cool Camera",
                 L_PAYMENTREQUEST_0_AMT0: 10,
-                L_PAYMENTREQUEST_0_QTY0: 1
+                L_PAYMENTREQUEST_0_QTY0: 1,
+
+                SOLUTIONTYPE: 'Sole'    //Needed for guest checkout
 
             }, function (res, err) {
 
@@ -43,19 +45,43 @@ application.factory('PayPalResource', function ($resource) {
             });
         }
 
-        $scope.removeViewCall = function () {
-            delete $scope.viewcall;
+        $scope.getExpressCheckout = function () {
+            console.log('getec');
+            PayPalResource.post({
+                    experience: 'expresscheckout',
+                    call: 'getexpresscheckout'
+                },
+                {
+                    _csrf: $scope.csrf,
+                    TOKEN: $scope.TOKEN
+
+                }, function (res, err) {
+
+                        $scope.getec = res.response.decoded
+                        console.log($scope.getec);
+
+
+                });
         }
 
-        $scope.toggle = function (variable) {
-            if ($scope.viewcall[variable] === undefined ) {
-                $scope.viewcall[variable] = 1;
-            }else if ($scope.viewcall[variable] === 1 ) {
-                $scope.viewcall[variable] = 0;
-            }
-            else {
-                $scope.viewcall[variable] = 1;
-            }
+        $scope.doExpressCheckout = function () {
 
+            PayPalResource.post({
+                    experience: 'expresscheckout',
+                    call: 'doexpresscheckout'
+                },
+                {
+                    _csrf: $scope.csrf,
+                    TOKEN: $scope.getec.TOKEN,
+                    PAYERID: $scope.getec.PAYERID,
+                    PAYMENTREQUEST_0_AMT: $scope.getec.PAYMENTREQUEST_0_AMT
+
+                }, function (res, err) {
+
+                    $scope.doec = res.response.decoded
+                    console.log($scope.doec);
+
+
+                });
         }
     });

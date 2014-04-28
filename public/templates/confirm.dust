@@ -1,0 +1,73 @@
+{>"layouts/master" /}
+
+{<body}
+    <h1>{@pre type="content" key="greeting"/}</h1>
+
+    <div class="row well" data-ng-app="application" data-ng-controller="Cart" data-ng-init="csrf='{_csrf}';TOKEN='{TOKEN}';getExpressCheckout()">
+        <div data-ng-show="getec && !doec">
+
+
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td>~~getec.FIRSTNAME~~</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>~~getec.LASTNAME~~</td>
+                    </tr>
+                    <tr>
+                        <td>Street</td>
+                        <td>~~getec.SHIPTOSTREET~~</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>~~getec.SHIPTOCITY~~</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>~~getec.SHIPTOSTATE~~</td>
+                    </tr>
+                    <tr>
+                        <td>Zip</td>
+                        <td>~~getec.SHIPTOZIP~~</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-primary" data-ng-click="doExpressCheckout()">Process Payment</button>
+        </div>
+        <div data-ng-show="doec">
+            <table class="table" >
+                <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ACK</td>
+                        <td>~~doec.ACK~~</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction ID</td>
+                        <td>~~doec.PAYMENTINFO_0_TRANSACTIONID~~</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/angularapps/base.js"></script>
+    <script type="text/javascript" src="/js/angularapps/controllers/cart.js"></script>
+
+{/body}
