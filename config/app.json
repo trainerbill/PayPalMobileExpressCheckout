@@ -1,0 +1,59 @@
+{
+ "host": "localhost",
+//
+ "port": 8001,
+//
+// "i18n": {
+//     "fallback": "en-US",
+//     "contentPath": "path:./locales"
+// },
+//
+// "routes": {
+//     "routePath": "path:./controllers"
+// },
+//
+//  "view engines": {
+//      "js": {
+//         "module": "adaro",
+//         "settings": {
+//             "helpers": null,
+//             "stream": false
+//         }
+//      },
+//
+//     "dust": {
+//         "module": "adaro",
+//         "settings": {
+//             "helpers": null,
+//             "stream": false
+//         }
+//     }
+// },
+// "express": {
+//     "x-powered-by": false,
+//     "trust proxy": false,
+//     "jsonp callback name": null,
+//     "json replacer": null,
+//     "json spaces": 0,
+//     "case sensitive routing": false,
+//     "strict routing": false,
+//     "view cache": true,
+//     "view engine": "js",
+//     "views": "path:./.build/templates"
+// }
+    "paypal-classic-sdk-config": {
+        "host": "api-3t.sandbox.paypal.com",
+        "path": "/nvp",
+        "port": "443",
+        "credentials": {
+            "USER": "seller_api1.awesome.com",
+            "PWD": "1374512372",
+            "SIGNATURE": "Aj1PRxuNKRh0FhwjgrTLGnn515trAGwGZHW7KLOlOuyQom-IEXlq.w4w"
+
+        },
+        "timeout": 30000,
+        "paypal_api_version": "109.0"
+    }
+
+
+}

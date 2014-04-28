@@ -1,0 +1,21 @@
+{>"layouts/master" /}
+
+{<body}
+    <h1>{@pre type="content" key="greeting"/}</h1>
+
+    <div class="row well" data-ng-app="application">
+        <div class="col-md-12">
+            <h3> DIGITAL SLR CAMERA </h3>
+            <img src="img/camera.jpg"  style="float: left;" width="300" height="250"/>
+            <p>  Dual Pixel CMOS AF enables you to shoot video like a camcorder with smooth, fast, and accurate autofocus; lets you enjoy instant and precise autofocus even when shooting stills from a variety of angles with the freedom provided by the Vari-angle LCD. </p>
+            <h4> Price : $10 </h4>
+        </div>
+        <div data-ng-controller="Cart" data-ng-init="csrf='{_csrf}'">
+            <a href="#" data-ng-click="setExpressCheckout()"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" /></a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/angularapps/base.js"></script>
+    <script type="text/javascript" src="/js/angularapps/controllers/cart.js"></script>
+
+{/body}
